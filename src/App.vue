@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getWeather() {
-      let url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.API_KEY}`;
+      let url = `/api/lat=${this.lat}&lon=${this.lon}&appid=${this.API_KEY}`;
       console.log(url);
       fetch(url)
         .then(res => res.json())
