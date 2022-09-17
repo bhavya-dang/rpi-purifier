@@ -33,41 +33,41 @@ app.use(express.static(path.join(__dirname, 'public')));
 console.log(path.join(__dirname, 'public'));
 
 app.get('/', function(req, res){ 
-  res.render('index',{status:"Press Button"});
+  res.sendFile('index.html')
 });
 
 
-app.post('/led/on', function(req, res){
+// app.post('/api/led/on', function(req, res){
 
-gpio.write(7, true, function(err) {
-        if (err) throw err;
-        console.log('Written True to pin');
+// gpio.write(7, true, function(err) {
+//         if (err) throw err;
+//         console.log('Written True to pin');
 
-console.log(path.join(__dirname, 'public'));
+// console.log(path.join(__dirname, 'public'));
 
-return res.render('index', {status: "Led is On"});
+// return res.render('index', {status: "Led is On"});
 
-    });
+//     });
 
-});
-
-
-app.post('/led/off', function(req, res){
-
-gpio.write(7, false, function(err) {
+// });
 
 
-        if (err) throw err;
+// app.post('/api/led/off', function(req, res){
 
-        console.log('Written False to pin');
+// gpio.write(7, false, function(err) {
 
-console.log(path.join(__dirname, 'public'));
 
-return res.render('index',{status: "Led is Off"});
+//         if (err) throw err;
 
-    });
+//         console.log('Written False to pin');
 
-});
+// console.log(path.join(__dirname, 'public'));
+
+// return res.render('index',{status: "Led is Off"});
+
+//     });
+
+// });
 
 
 app.listen(3000, function () {

@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getWeather() {
-      let url = `/api/lat=${this.lat}&lon=${this.lon}&appid=${this.API_KEY}`;
+      let url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.API_KEY}`;
       console.log(url);
       fetch(url)
         .then(res => res.json())
@@ -32,7 +32,11 @@ export default {
           this.data = data
           console.log(data.list[0].main.pm2_5)
         })
-    }
+    },
+    // getPi() {
+    //   fetch('dhkhdlkdnd.com')
+    //     .then(() => console.log(1))
+    // }
   },
 }
 </script>

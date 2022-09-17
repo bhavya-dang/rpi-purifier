@@ -9,7 +9,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://api.openweathermap.org/data/2.5/air_pollution/forecast?',
+        target: 'raspberrypi:3000',
         }
     }
   }
