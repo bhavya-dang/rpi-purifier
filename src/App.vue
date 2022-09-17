@@ -4,7 +4,7 @@
     <input type="text" v-on:keyup.enter="getWeather" v-model="lon" id="lon" style="margin-left: 5px;">
     <button @click="getWeather" style="margin-left: 5px;">Get Weather</button>
     <div v-if="data">
-      <h1>PM2.5: {{ data.list[0].main.pm2_5 }}</h1>
+      <h1>PM2.5: {{ data.list[0].components.pm2_5 }}</h1>
     </div>
 
   </div>
