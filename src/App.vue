@@ -1,21 +1,35 @@
 <template>
-  <div>
-    <input type="text" v-on:keyup.enter="getWeather" v-model="lat" id="lat">
-    <input type="text" v-on:keyup.enter="getWeather" v-model="lon" id="lon" style="margin-left: 5px;">
-    <button @click="getWeather" style="margin-left: 5px;">Get Weather</button>
-    <div v-if="data">
-      <h1>PM2.5: {{ pm25 }}</h1>
+  <div class="relative container">
+    <div class="box p-10 bg-white">
+      <h1 class="text-center text-black text-2xl font-semibold">Raspberry Pi // Air Purifier Admin Dashboard</h1>
+      <h3></h3>
     </div>
 
+
+    <h1 class="p-4 text-pink-600 font-bold text-2xl">Your Location:</h1>
+    
+    <label for="lat" class="font-semibold ml-4">Latitude:</label>
+    <input class="p-2 m-4 bg-pink-600 rounded-md" placeholder="Enter Latitude: " type="text" v-on:keyup.enter="getWeather" v-model="lat" id="lat">
+    <label for="lat" class="font-semibold ml-4">Longitude:</label>
+    <input class="p-2 m-4 bg-pink-600 rounded-md" placeholder="Enter Longitude: " type="text" v-on:keyup.enter="getWeather" v-model="lon" id="lon">
+    <button class="bg-gray-200 text-pink-600 p-2 rounded-md border-solid border-2 border-white" @click="getWeather" style="margin-left: 5px;">Get Weather</button>
+    <div v-if="data" class="ml-5 mt-2">
+      <h3 class="pm10 font-bold text-2xl">{{ pm10 }} μg/m3</h3>
+      <span class="levels font-light text-md">PM10 LEVELS</span>
+    </div>
+    <Footer id="footer"></Footer>
   </div>
 </template>
 
 <script>
 // eslint-disable-next-line no-unused-vars
 import axios from "axios";
-
+import Footer from "./components/Footer.vue";
 export default {
   name: 'App',
+  components: {
+    Footer
+  },
   data() {
     return {
       lat: "",
@@ -75,7 +89,23 @@ export default {
     },
   }
 
-}
-
+};
+ 
 </script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,200&display=swap');
+  html, body {
+    height: 100%;
+    background-color: #16213E;
+  }
+  pm10, levels{
+    font-family: 'Fira Sans', sans-serif;
+  }
+  #footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+</style> 
 

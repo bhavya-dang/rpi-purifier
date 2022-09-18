@@ -15,9 +15,12 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "mongoose": "^5.13.15",
+    "onoff": "^6.0.3",
+    "rpi-gpio": "^2.1.7",
     "twilio": "^3.82.0",
     "util": "^0.12.4",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-toasted": "^1.1.28"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
