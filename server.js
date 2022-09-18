@@ -20,7 +20,7 @@ const blinkLED = () => {
 
  }
 }
-let blinkInterval = setInterval(blinkLED, 500); 
+let blinkInterval = setInterval(blinkLED, 500);  
 
 const endBlink = () => { 
   clearInterval(blinkInterval); 
