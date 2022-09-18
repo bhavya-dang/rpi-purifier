@@ -8,7 +8,7 @@ module.exports = {
     allowedHosts: "all",
     proxy: {
       '/api': {
-        target: 'raspberrypi.local:5000',
+        target: 'http://localhost:5000',
       }
     }
   }

@@ -3,7 +3,7 @@
       <div id="footer" class="mt-3 p-4 text-center flex-none">
         <h3 class="text-base font-medium tracking-normal text-gray-900">
           Developed and maintained with ❤️ by <span class="font-bold underline">Work In Progress</span> @HTM3.0
-          © 2021
+          © 2022
         </h3>
       </div>
     </div>
