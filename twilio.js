@@ -5,4 +5,3 @@ const authToken = process.env.VUE_APP_AUTH;
 const client = require('twilio')(accountSid, authToken);
 
 module.exports = client;
-console.log(accountSid, authToken);

@@ -1,9 +1,15 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require("cors");
 const app = express();
 const Data = require('./models/Data');
 const client = require('./twilio');
+const dotenv = require('dotenv').config();
+
+// let Gpio = require('onoff').Gpio; 
+// let LED = new Gpio(4, 'out'); 
+// let blinkInterval = setInterval(blinkLED, 500); 
 
 
 // Connect to database
@@ -12,16 +18,14 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.post('/api/v1/data', async(req) => {
-    // console.log(req.body)
-    // console.log("From server.js", req.body.pm10, req.body.pm2_5, req.body.aqi, req.body.date);
     if (req.body.pm10 > 10) {
         console.log("PM10 is greater than 10");
         await client.messages.create({
-          body: `PM10 is greater than 10. It is ${this.pm10}`,
+          body: `⚠ Air is very toxic at the moment. The PM10 concentration is ${req.body.pm10} μg/m3`,
           from: process.env.VUE_APP_FROM,
           to: process.env.VUE_APP_TO
         })
-        .then(message => console.log(message.sid));
+        .then(message => console.log(message.sid, "Message sent"));
       }
 
     let dataObj = new Data({

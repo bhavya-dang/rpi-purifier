@@ -27,10 +27,13 @@ export default {
       data : null
     }
   },
+  mounted() {
+    console.log('mounted');
+    this.getLocation();
+    },
   methods: {
     async getWeather() {
       let url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.API_KEY}`;
-      console.log(url);
       fetch(url)
         .then(res => res.json())
         .then(async data => {
@@ -38,7 +41,7 @@ export default {
           this.pm10 = data.list[0].components.pm10,
           this.pm25 = data.list[0].components.pm2_5,
           this.aqi = data.list[0].main.aqi
-          console.log("From vue", this.pm10, this.pm25, this.aqi);
+          console.log(`From Vue: PM10: ${this.pm10}, PM2.5: ${this.pm25}, AQI: ${this.aqi}`);
 
         const res = axios({
         url: "/api/v1/data",
@@ -56,9 +59,20 @@ export default {
         })
       });
       let d = await res;
-      console.log(d);
-      })
-    }
+      console.log("Data saved in db: ", d);
+        })
+    },
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          this.lat = position.coords.latitude;
+          this.lon = position.coords.longitude;
+          console.log(`Lat: ${this.lat}, Lon: ${this.lon}`);
+        });
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    },
   }
 
 }
