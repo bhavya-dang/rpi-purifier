@@ -5,6 +5,7 @@ module.exports = defineConfig({
 
 module.exports = {
   devServer: {
+    allowedHosts: "all",
     proxy: {
       '/api': {
         target: 'raspberrypi.local:5000',

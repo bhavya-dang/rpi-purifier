@@ -9,7 +9,6 @@ const dotenv = require('dotenv').config();
 
 let Gpio = require('onoff').Gpio; 
 let LED = new Gpio(4, 'out'); 
-let blinkInterval = setInterval(blinkLED, 500); 
 let gpio = require('rpi-gpio');
 gpio.setup(7, gpio.DIR_OUT);
 
@@ -21,6 +20,7 @@ const blinkLED = () => {
 
  }
 }
+let blinkInterval = setInterval(blinkLED, 500); 
 
 const endBlink = () => { 
   clearInterval(blinkInterval); 
