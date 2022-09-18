@@ -7,27 +7,27 @@ const Data = require('./models/Data');
 const client = require('./twilio');
 const dotenv = require('dotenv').config();
 
-// let Gpio = require('onoff').Gpio; 
-// let LED = new Gpio(4, 'out'); 
-// let blinkInterval = setInterval(blinkLED, 500); 
-// let gpio = require('rpi-gpio');
-// gpio.setup(7, gpio.DIR_OUT);
+let Gpio = require('onoff').Gpio; 
+let LED = new Gpio(4, 'out'); 
+let blinkInterval = setInterval(blinkLED, 500); 
+let gpio = require('rpi-gpio');
+gpio.setup(7, gpio.DIR_OUT);
 
-// const blinkLED = () => {
-//   if (LED.readSync() === 0) {
-//     LED.writeSync(1); //set output to 1 i.e turn led on
-//   } else {
-//     LED.writeSync(0); //set output to 0 i.e. turn led off 
+const blinkLED = () => {
+  if (LED.readSync() === 0) {
+    LED.writeSync(1); //set output to 1 i.e turn led on
+  } else {
+    LED.writeSync(0); //set output to 0 i.e. turn led off 
 
-//  }
-// }
+ }
+}
 
-// const endBlink = () => { 
-//   clearInterval(blinkInterval); 
-//   LED.writeSync(0); 
-//   LED.unexport(); // Unexport GPIO to free resources
-// }
-// setTimeout(endBlink, 10000); 
+const endBlink = () => { 
+  clearInterval(blinkInterval); 
+  LED.writeSync(0); 
+  LED.unexport(); // Unexport GPIO to free resources
+}
+setTimeout(endBlink, 10000); 
 
 
 // Connect to database
@@ -37,11 +37,11 @@ app.use(cors());
 app.use(express.json());
 app.post('/api/v1/data', async(req) => {
     if (req.body.pm10 > 10) {
-    //   gpio.write(7, true, (err) => {
-    //     if (err) throw err;
-    //     console.log("LED ON");
+      gpio.write(7, true, (err) => {
+        if (err) throw err;
+        console.log("LED ON");
 
-    // });
+    });
         console.log("PM10 is greater than 10");
         await client.messages.create({
           body: `⚠ Air is very toxic at the moment. The PM10 concentration is ${req.body.pm10} μg/m3`,
