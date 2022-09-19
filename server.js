@@ -36,13 +36,13 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.post('/api/v1/data', async(req) => {
-    if (req.body.pm10 > 10) {
+    if (req.body.pm10 > 100) {
     //   gpio.write(7, true, (err) => {
     //     if (err) throw err;
     //     console.log("LED ON");
 
     // });
-        console.log("PM10 is greater than 10");
+        console.log("PM10 is greater than 100");
         await client.messages.create({
           body: `⚠ Air is very toxic at the moment. The PM10 concentration is ${req.body.pm10} μg/m3`,
           from: process.env.VUE_APP_FROM,
