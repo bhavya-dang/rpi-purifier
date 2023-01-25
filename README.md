@@ -1,5 +1,5 @@
 # Raspberry Pi - Centralised Air Purifying System
-A completely autonomous and centralised air purifying system for your home. I and [@jailbreakervc](https://github.com/jailbreakerVC) built this prototype as our project for the [Hack the Mountains 3.0] (https://www.hackthemountain.tech/) hackathon.
+A completely autonomous and centralised air purifying system for your home. I and [@jailbreakervc](https://github.com/jailbreakerVC) built this prototype as our project for the [Hack the Mountains 3.0](https://www.hackthemountain.tech/) hackathon.
 
 ## Tech Stack
 - Raspberry Pi 4
